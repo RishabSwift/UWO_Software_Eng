@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="433.0" minWidth="500.0" prefHeight="433.0" prefWidth="552.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SampleHandlerController">
+   <children>
+      <Label fx:id="jumpingLabel" layoutX="99.0" layoutY="119.0" onMouseEntered="#movingLabel" text="Try Touching Me!" />
+   </children>
+</AnchorPane>

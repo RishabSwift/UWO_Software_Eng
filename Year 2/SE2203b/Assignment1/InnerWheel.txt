@@ -1,0 +1,6 @@
+in-Love 0
+fear 0
+angry 0
+sad 0
+surprised 0
+joyful 0

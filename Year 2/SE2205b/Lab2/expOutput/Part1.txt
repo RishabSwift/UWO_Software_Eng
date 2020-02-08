@@ -1,0 +1,3 @@
+Arrival Time: 3.0, Departure Time: 3.1
+Arrival Time: 3.5, Departure Time: 3.6
+Arrival Time: 3.8, Departure Time: 3.9
