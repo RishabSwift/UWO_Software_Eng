@@ -1,0 +1,179 @@
+<div class="row align-items-center">
+    <div class="col">
+        <h1 class="mb-0 pb-0">Your Course Lists</h1>
+    </div>
+
+    <div class="col-auto">
+        <button (click)="this.scheduleService.form.reset(); this.scheduleService.isScheduleEditMode = false"
+                type="button"
+                class="btn btn-light rounded-pill"
+                data-toggle="modal"
+                data-target="#scheduleFormModal">
+            <i class="fe fe-plus"></i>
+            Create new Course List
+        </button>
+    </div>
+</div>
+
+
+<!-- Files -->
+<div class="card mt-3" data-list='{"valueNames": ["name"]}'>
+    <div class="card-header">
+
+        <!-- Form -->
+        <div class="input-group input-group-flush input-group-merge">
+            <input type="search"
+                   (keyup)="search()"
+                   [(ngModel)]="searchString"
+                   class="form-control form-control-prepended list-search"
+                   placeholder="Search">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span class="fe fe-search"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <!-- List -->
+        <ul class="list-group list-group-lg list-group-flush list my-n4">
+            <li class="list-group-item" *ngFor="let schedule of filteredSchedules">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="#!" class="avatar avatar-lg">
+                            <span class="avatar-title rounded bg-white text-secondary">
+                                <span class="fe fe-folder"></span>
+                            </span>
+                        </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1 name text-primary">
+                            <button class="btn btn-link p-0 font-weight-bold"
+                                    (click)="coursesInSchedule.getCoursesInSchedule(schedule)">{{ schedule.name }}</button>
+                            <span *ngIf="schedule.published" class="ml-3 badge badge-soft-primary">Published</span>
+                        </h4>
+
+
+                        <!-- Text -->
+                        <p class="card-text text-muted mb-1">
+                            {{ scheduleService.countCoursesForSchedule(schedule) }}
+                            courses • updated {{ schedule.updated_at.toDate()  | dateAgo }}
+                        </p>
+
+                    </div>
+                    <div class="col-auto">
+                        <!-- Button -->
+                        <button (click)="scheduleService.populateForm(schedule)"
+                                class="btn btn-sm btn-white d-none d-md-inline-block">
+                            Edit
+                        </button>
+                    </div>
+                    <div class="col-auto">
+
+                        <div class="dropdown">
+
+                            <a href="#"
+                               class="dropdown-ellipses dropdown-toggle"
+                               role="button"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                    <i class="fe fe-share"></i> Share
+                                </a>
+                                <button (click)="onDelete(schedule)" class="dropdown-item text-danger">
+                                    <i class="fe fe-trash"></i> Delete
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade"
+     id="scheduleFormModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="scheduleFormModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form (ngSubmit)="onSubmit()" novalidate [formGroup]="this.scheduleService.form">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 *ngIf="!scheduleService.isScheduleEditMode" class="modal-title" id="scheduleFormModalLabel">
+                        Create new Course List</h2>
+                    <h2 *ngIf="scheduleService.isScheduleEditMode" class="modal-title">Edit Course List</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <input type="hidden" formControlName="$id">
+                    <div class="form-group">
+                        <label for="list-name">Course List Name</label>
+                        <input [ngClass]="{
+
+    'is-invalid': !formControls.name.valid && formControls.name.dirty
+}" type="text" formControlName="name" class="form-control" id="list-name" placeholder="Enter a name">
+                        <div [hidden]="formControls.name.valid" class="invalid-feedback">
+                            The name is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="list-description">Description</label>
+                        <textarea class="form-control"
+                                  formControlName="description"
+                                  id="list-description"
+                                  placeholder="Optional"></textarea>
+                    </div>
+
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" formControlName="published" class="custom-control-input" id="published">
+                        <label class="custom-control-label" for="published">Make this list public</label>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button [disabled]="this.scheduleService.form.status != 'VALID'"
+                            type="submit"
+                            class="btn btn-primary">
+                        <i [ngClass]="{
+                                'fe-check': scheduleService.isScheduleEditMode,
+                                                           'fe-plus': !scheduleService.isScheduleEditMode
+                           }" class="fe"></i>
+
+                        {{ scheduleService.isScheduleEditMode ? 'Save Changes' : 'Add Schedule' }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-courses-in-schedule [showDelete]="true" [modalId]="'showCoursesInSchedule'" #coursesInSchedule [allCourses]="allCourses" [selectedSchedule]="selectedSchedule" ></app-courses-in-schedule>

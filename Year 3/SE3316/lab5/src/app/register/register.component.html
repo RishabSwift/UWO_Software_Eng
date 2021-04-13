@@ -1,0 +1,107 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-md-5 col-xl-4 my-5">
+
+        <!-- Heading -->
+        <h1 class="display-4 text-center mb-3">
+            Create a New Account
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-muted text-center mb-5">
+            It'll only take seconds.
+        </p>
+
+        <!-- Form -->
+        <form (ngSubmit)="register()" novalidate [formGroup]="this.auth.registerForm">
+
+            <!-- Email address -->
+            <div class="form-group">
+
+                <!-- Label -->
+                <label>Name</label>
+
+                <!-- Input -->
+                <input [ngClass]="{
+
+    'is-invalid': !formControls.displayName.valid && formControls.displayName.dirty
+}" type="text" formControlName="displayName" class="form-control" placeholder="Enter a name">
+                <div [hidden]="formControls.displayName.valid" class="invalid-feedback">
+                    Please enter your name.
+                </div>
+            </div>
+
+
+            <!-- Email address -->
+            <div class="form-group">
+
+                <!-- Label -->
+                <label>Email Address</label>
+
+                <!-- Input -->
+                <input [ngClass]="{
+    'is-invalid': !formControls.email.valid && formControls.email.dirty
+}" type="email" formControlName="email" class="form-control" placeholder="name@address.com">
+                <div [hidden]="formControls.email.valid" class="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
+
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+
+
+                <!-- Label -->
+                <label>Password</label>
+
+
+                <!-- Input group -->
+                <div class="input-group input-group-merge">
+
+                    <!-- Input -->
+
+                    <input [ngClass]="{
+
+    'is-invalid': !formControls.password.valid && formControls.password.dirty
+}" formControlName="password"  type="password" class="form-control form-control-appended" placeholder="Choose a password">
+
+
+                    <!-- Icon -->
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fe fe-eye"></i>
+                        </span>
+                    </div>
+                    <div [hidden]="formControls.password.valid" class="invalid-feedback">
+                        Please enter a new password.
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- Submit -->
+            <button  [disabled]="this.auth.registerForm.status != 'VALID'"
+                     type="submit" class="btn btn-lg btn-block btn-primary mb-3">
+                Create Account
+            </button>
+            <!--            <a class="btn btn-lg btn-block btn-primary mb-3">-->
+            <!--                Sign in-->
+            <!--            </a>-->
+
+        </form>
+
+        <button (click)="auth.googleSignIn()" type="button"  class="btn btn-lg btn-block btn-light mb-3">
+            Sign up with Google
+        </button>
+            <!-- Link -->
+            <div class="text-center">
+                <small class="text-muted text-center">
+                    Already have an account? <a routerLink="/login">Sign in</a>.
+                </small>
+            </div>
+
+
+    </div>
+</div>

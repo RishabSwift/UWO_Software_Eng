@@ -1,0 +1,203 @@
+html, body, div, span
+h1, h2, h3, h4, h5, h6, p, 
+a,  img, ol, ul, li, form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+strong {
+    font-weight: bold;
+}
+
+
+html,
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+    background: #f9fbfd;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+p {
+    line-height: 150%;
+    margin: 0 0 10px;
+}
+
+
+a {
+    color: #528b9c;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3b636c;
+}
+
+input[type=text] {
+    background-color:#edf2f9;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-clip: padding-box;
+
+}
+
+button {
+    background-color:#edf2f9;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 12px 30px;
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #d0ddef;
+}
+
+input[type=text]:focus {
+    background-color:#e7ecf3;
+}
+
+input[type=text]:hover {
+    background-color: #e7ecf3;
+}
+
+input[type=text]::placeholder {
+    color: #b1c2d9;
+}
+
+.container {
+    padding: 100px 100px;
+    margin: auto;
+    position: absolute;
+    width: 1384px;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-equally-spaced {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pokemon {
+    width: 100%;
+    display: block;
+    align-content: center;
+    text-align: center;
+}
+
+.pokemon-name {
+    color: #1e7a88 !important;
+}
+
+.pokemon-id {
+   position: absolute;
+    font-size: 35px;
+    color: #b1c2d9;
+}
+
+.pokemon-image {
+    display: block;
+}
+
+.pokemon-desc {
+    font-size: 15px;
+    color: #616161;
+
+}
+
+li {
+    background: white;
+    padding: 30px;
+    color: black;
+    display: flex;
+    max-width: 350px;
+    min-width: 350px;
+    margin-top: 1.5rem;
+    border-color: #edf2f9;
+    box-shadow: 0 .75rem 1.5rem rgba(18, 38, 63, .03);
+    margin-left: 10px;
+    margin-right: 10px;
+    list-style: none;
+
+} 
+
+ul {
+    padding-bottom: 50px;
+}
+
+li:hover {
+    box-shadow: 0 1.75rem 2.5rem rgba(18, 38, 63, .53);
+}
+
+
+img {
+    max-width: 50%;
+    height: auto;
+
+}
+	
+.w-100 {
+    min-width: 100%;
+}
+
+
+.text-light {
+    color: #95aac9 !important;
+}
+
+#pokemons-search-list {
+    background-color:#C9F4E5;
+    /* border-radius: 40px; */
+    padding: 20px;
+
+}
+
+#search-clear-results {
+    display: none;
+}
+
+.mr-10 {
+    margin-right: 10px !important;
+}
+
+.pb-50 {
+    padding-bottom: 50px !important;
+}

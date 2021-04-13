@@ -1,0 +1,33 @@
+// 
+// user-variables.scss
+// Use this to overwrite Bootstrap and Dashkit variables
+//
+
+// Example of a variable override to change Dashkit's background color
+// Remove the "//" to comment it in and see it in action!
+// $body-bg: #12263F;
+
+$gray-300: #E3EBF6;
+$gray-400: #D2DDEC;
+$gray-500: #B1C2D9;
+$gray-600: #95AAC9;
+$gray-700: #6E84A3;
+
+$primary: #7901cf;
+$primary-bg: #f6f1f9;
+//$input-bg: $primary-bg !default;
+//$input-disabled-bg: $input-bg !default;
+//$input-border-color: #BBE1B6 !default;
+$input-border-width: 2px;
+//$text-muted: #747D8A !default;
+
+//$input-border-color: #BBE1B6 !default;
+//$input-placeholder-color: #789963 !default;
+//$input-color: #2a4815 !default;
+
+$breadcrumb-divider-color: $gray-600 !default;
+$breadcrumb-active-color: $gray-600 !default;
+$text-muted: #677a95;
+
+$path-to-img: '../../img' !default;
+$path-to-fonts: '../../fonts' !default;

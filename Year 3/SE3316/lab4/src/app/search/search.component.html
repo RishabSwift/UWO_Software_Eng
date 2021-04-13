@@ -1,0 +1,94 @@
+<div class="search-bar mt-50 mb-50">
+    <div class="grid mb-0">
+        <div class="col-1-3">
+            <label for="subject">Subject</label>
+            <select [(ngModel)]="subjectInput" name="subject" id="subject">
+                <option></option>
+                <option *ngFor="let subject of subjectList" value="{{subject}}">{{ subject}}</option>
+            </select>
+        </div>
+        <div class="col-1-3">
+            <label for="course">Course</label>
+            <input type="text" id="course" [(ngModel)]="courseInput" name="course">
+        </div>
+        <div class="col-1-1">
+            <label for="component">Component</label>
+            <select id="component" [(ngModel)]="componentInput" name="component">
+                <option></option>
+                <option *ngFor="let component of componentList" value="{{component}}">{{ component}}</option>
+            </select>
+        </div>
+
+        <div class="col-1">
+            <label for="search">&nbsp;</label>
+            <button (click)="search()" id="search">Search</button>
+        </div>
+    </div>
+</div>
+
+<!-- Display search results -->
+<div class="mb-50" id="search-results-container">
+
+    <div id="search-results">
+
+        <div class="result" *ngFor="let course of searchList">
+
+            <h2>Search Results</h2>
+
+            <div class="header">
+                <h3 class="course-title">{{ course.id }} - {{ course.name}}</h3>
+                <p>
+                    <b>Course Description: </b>
+                    {{ course.description }}
+                </p>
+            </div>
+            <div class="course-body">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Section</th>
+                        <th>Component</th>
+                        <th>Class #</th>
+                        <th>Days</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ course.info.class_section}}</td>
+                        <td [ngClass]="getComponentCssClass(course.component)">{{ course.component }}</td>
+                        <td>{{ course.info.class_nbr}}</td>
+                        <td> {{ course.days }}</td>
+                        <td>{{ course.status }}</td>
+                        <td>
+                            <a (click)="addCourseToSchedule(course.id, course.subject)" href="javascript:;">
+                                Add to schedule
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add course to a modal (by clicking on a button beside the searched course) -->
+<div [ngClass]="showModal ? 'd-block' : 'd-none'" id="add-course-modal" class="modal">
+    <div class="modal-content">
+        <span (click)="showModal = false" class="close-modal">&times;</span>
+        <h3 class="mb-5">Add Course to Schedule</h3>
+
+
+        <label for="user-schedules">Select a schedule to add this course to</label>
+        <select [(ngModel)]="selectedSchedule" name="subject" id="user-schedules">
+            <option *ngFor="let schedule of scheduleList" value="{{schedule.name}}">{{ schedule.name }}</option>
+        </select>
+        <input [(ngModel)]="selectedCourseId" type="hidden" name="course-id">
+        <input [(ngModel)]="selectedSubject" type="hidden" name="subject-name">
+
+        <button (click)="saveCourseInSchedule()" class="success">Add to Schedule</button>
+    </div>
+</div>

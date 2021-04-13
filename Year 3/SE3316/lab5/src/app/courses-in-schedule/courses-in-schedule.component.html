@@ -1,0 +1,79 @@
+<!-- Modal -->
+<div class="modal fade"
+     id="{{ modalId }}"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="showCoursesModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="showCoursesModalLabel">Courses in
+                    <span class="text-primary">{{ selectedSchedule?.name }}</span>
+
+                    <span class="badge badge-primary ml-3" *ngIf="selectedSchedule?.published">Published</span>
+                </h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div *ngIf="selectedSchedule?.description" class="modal-body">
+
+                <span class="text-muted">Description:</span>
+                {{ selectedSchedule?.description }}
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table *ngIf="selectedScheduleCourses?.length > 0 else noCoursesInSchedule"
+                       class="table table-sm table-nowrap">
+                    <thead>
+                    <tr>
+                        <th scope="col">Section</th>
+                        <th scope="col">Component</th>
+                        <th scope="col">Class #</th>
+                        <th scope="col">Days</th>
+                        <th colspan="2" scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let course of selectedScheduleCourses">
+                        <th>{{ course.section }}</th>
+                        <th>{{ course.component }}</th>
+                        <th>{{ course.number }}</th>
+                        <th>{{ course.days }}</th>
+                        <th>
+                            <span class="badge {{ course.status === 'Full' ? 'badge-danger' : 'badge-success'}}">{{ course.status }}</span>
+                        </th>
+
+                        <td *ngIf="showDelete" class="text-right">
+                            <div class="d-inline-flex">
+                                <button (click)="deleteCourseInSchedule(selectedSchedule, course.id)"
+                                        class="btn btn-link text-danger btn-sm text-sm">
+                                    <i class="fe fe-x"></i>
+                                    Remove
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--            </div>-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noCoursesInSchedule>
+    <div class="alert alert-warning rounded-0">
+        There are no courses in this schedule. Why not add some courses?
+    </div>
+
+</ng-template>

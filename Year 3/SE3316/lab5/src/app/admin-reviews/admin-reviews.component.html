@@ -1,0 +1,51 @@
+<div class="header">
+    <div class="header-body">
+        <div class="row align-items-center">
+            <div class="col">
+
+                <!-- Title -->
+                <h1 class="header-title">
+                    All Course Reviews
+                </h1>
+
+            </div>
+        </div> <!-- / .row -->
+    </div>
+</div>
+
+<div class="card card-table">
+    <div class="table-responsive">
+        <table class="table table-sm table-nowrap">
+            <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Course</th>
+                <th scope="col">Review</th>
+                <th scope="col" class="text-right">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let review of allReviews">
+                <th scope="row">{{ review.username }}</th>
+                <td>{{ review.courseName }}</td>
+                <td>{{ review.review }}</td>
+                <td class="text-right">
+                    <a href="javascript:;" (click)="reviewService.hideReview(review)" *ngIf="review.visible">
+                        <i class="fe fe-eye-off"></i>
+                        Hide Review
+                    </a>
+
+                    <a href="javascript:;" (click)="reviewService.showReview(review)" *ngIf="!review.visible">
+                        <i class="fe fe-eye"></i>
+                        Show Review
+                    </a>
+
+                    <a (click)="reviewService.delete(review)" class="text-danger ml-3" type="button">
+                        <i class="fe fe-x"></i>
+                        Delete Review</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

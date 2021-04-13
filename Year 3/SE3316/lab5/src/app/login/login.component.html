@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-md-5 col-xl-4 my-5">
+
+        <!-- Heading -->
+        <h1 class="display-4 text-center mb-3">
+            Sign in
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-muted text-center mb-5">
+            Welcome back.
+        </p>
+
+        <!-- Form -->
+        <form (ngSubmit)="login()" novalidate [formGroup]="this.auth.loginForm">
+
+            <!-- Email address -->
+            <div class="form-group">
+
+                <!-- Label -->
+                <label>Email Address</label>
+
+                <!-- Input -->
+                <input [ngClass]="{
+    'is-invalid': !formControls.email.valid && formControls.email.dirty
+}" type="email" formControlName="email" class="form-control" placeholder="name@address.com">
+                <div [hidden]="formControls.email.valid" class="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
+
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+
+
+                <!-- Label -->
+                <label>Password</label>
+
+
+                <!-- Input group -->
+                <div class="input-group input-group-merge">
+
+                    <!-- Input -->
+
+                    <input [ngClass]="{
+
+    'is-invalid': !formControls.password.valid && formControls.password.dirty
+}" formControlName="password"  type="password" class="form-control form-control-appended" placeholder="Choose a password">
+
+
+                    <!-- Icon -->
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fe fe-eye"></i>
+                        </span>
+                    </div>
+                    <div [hidden]="formControls.password.valid" class="invalid-feedback">
+                        Please enter a new password.
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- Submit -->
+            <button   [disabled]="this.auth.loginForm.status != 'VALID'" routerLink="register" class="btn btn-lg btn-block btn-primary mb-3">
+                Sign in
+            </button>
+
+        </form>
+
+
+        <button (click)="auth.googleSignIn()" type="button"  class="btn btn-lg btn-block btn-light mb-3">
+                Sign in with Google
+            </button>
+
+            <!--            <a class="btn btn-lg btn-block btn-primary mb-3">-->
+            <!--                Sign in-->
+            <!--            </a>-->
+
+            <!-- Link -->
+            <div class="text-center">
+                <small class="text-muted text-center">
+                    Don't have an account yet? <a routerLink="/register">Sign up</a>.
+                </small>
+            </div>
+
+
+    </div>
+</div>

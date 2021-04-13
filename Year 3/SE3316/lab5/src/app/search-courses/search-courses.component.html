@@ -1,0 +1,211 @@
+<div class="card">
+    <div class="card-body">
+        <h2>
+            Search for courses
+        </h2>
+        <div class="row">
+            <div class="col-md-7">
+                <input type="text"
+                       [(ngModel)]="searchInput"
+                       (keyup)="searchCourses()"
+                       class="form-control form-control-prepended list-search"
+                       placeholder="Search a course....">
+            </div>
+            <div class="col-md-3">
+                <select [(ngModel)]="subjectInput"
+                        (change)="searchCourses()"
+                        class="form-control"
+                        name="component"
+                        id="component">
+                    <option value=""></option>
+                    <option *ngFor="let subject of getSubjects()">{{ subject }}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select (change)="searchCourses()"
+                        [(ngModel)]="searchComponent"
+                        class="form-control"
+                        name="component">
+                    <option value=""></option>
+                    <option value="LAB">LAB</option>
+                    <option value="LEC">LEC</option>
+                    <option value="TUT">TUT</option>
+                </select>
+            </div>
+        </div>
+
+        <div *ngIf="filteredCourses.length > 0">
+
+            <div class="scrollable-card">
+                <div class="row align-items-center mt-3 mx-1">
+                    <div class="col col-12" *ngFor="let course of filteredCourses">
+
+                        <a href="#result-{{ course.id }}"
+                           data-toggle="collapse"
+                           class="h2 text-body text-left font-weight-bold mb-1 d-block btn-course   btn-link btn">
+                            <span>
+                                {{ course.subject }} {{ course.id }}
+                            </span>
+                            <span class="font-weight-light text-muted">
+                                {{ course.name }}
+                            </span>
+                        </a>
+
+                        <div class="collapse pt-3 px-4 bg-light rounded-lg" id="result-{{ course.id }}">
+                            <p *ngIf="course.description">
+                                <span class="text-secondary font-weight-bold">Course Description:</span>
+                                {{ course.description }}
+                            </p>
+
+                            <table class="table table-sm table-nowrap">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Section</th>
+                                    <th scope="col">Component</th>
+                                    <th scope="col">Class #</th>
+                                    <th scope="col">Days</th>
+                                    <th colspan="2" scope="col">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th>{{ course.section }}</th>
+                                    <th>{{ course.component }}</th>
+                                    <th>{{ course.number }}</th>
+                                    <th>{{ course.days }}</th>
+                                    <th>
+                                        <span class="badge {{ course.status === 'Full' ? 'badge-danger' : 'badge-success'}}">{{ course.status }}</span>
+                                    </th>
+                                    <td class="text-right">
+
+                                        <button (click)="openReviewsModal(course)" class="btn btn-sm btn-white ml-2"><i class="fe fe-star"></i> Reviews
+                                        </button>
+                                        <div class="d-inline-flex"
+                                             *ngIf="user?.uid; else loginToAddToSchedule">
+
+                                            <ng-container *ngTemplateOutlet="addToSchedule; context: {courseId: course.id, course: course}"></ng-container>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade"
+     id="reviews-modal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Reviews for this course</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+                <form *ngIf="auth.isLoggedIn"
+                      (ngSubmit)="leaveReview()"
+                      novalidate
+                      class="mb-3"
+                      [formGroup]="reviewService.form">
+                    <input type="hidden" name="$id">
+
+                    <div class="form-group mb-1">
+                        <label for="list-description">Your Review</label>
+                        <textarea
+                                [ngClass]="{ 'is-invalid': !formControls.review.valid && formControls.review.dirty}"
+                                class="form-control"
+                                formControlName="review"
+                                id="list-description"
+                                placeholder="Optional"></textarea>
+
+                        <div [hidden]="formControls.review.valid" class="invalid-feedback">
+                            Please enter a review.
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button [disabled]="this.reviewService.form.status != 'VALID'" type="submit" class="btn btn-sm btn-primary">Leave Review</button>
+                    </div>
+
+                </form>
+
+                <div *ngIf="getReviewsForCourse().length == 0">
+                    <div class="alert alert-warning">
+                        <i class="fe fe-warning">
+                        </i>
+                        There are no reviews for this course.
+                    </div>
+                </div>
+                <div *ngFor="let review of getReviewsForCourse()" class="card">
+                    <div class="card-body bg-light py-2">
+
+                        <!-- Header -->
+                        <div class="mb-1">
+                            <div class="row align-items-center">
+                                <div class="col ml-n2">
+                                    <!-- Title -->
+                                    <h4 class="mb-1">
+                                        {{ review.username }}
+                                    </h4>
+                                    <!-- Time -->
+                                    <p class="card-text small text-muted">
+                                        <span class="fe fe-clock"></span> {{ review.created_at.toDate() | dateAgo }}
+                                    </p>
+
+                                </div>
+
+                            </div> <!-- / .row -->
+                        </div>
+
+                        <!-- Text -->
+                        <p class="mb-0">
+                            {{ review.review }}
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #addToSchedule let-course="course" let-courseId="courseId">
+
+    <select #scheduleName class="form-control form-control-sm" name="schedule_name">
+        <option value="{{ schedule.$id }}" *ngFor="let schedule of allSchedules">
+            {{ schedule.name }}
+        </option>
+    </select>
+    <button (click)="scheduleService.addCourseToSchedule(scheduleName.value, courseId)"
+            class="btn btn-sm btn-primary d-md-inline-block ml-1">
+        <i class="fe fe-plus"></i>
+        Add
+    </button>
+</ng-template>
+
+<ng-template #loginToAddToSchedule>
+    <button disabled class="btn btn-sm btn-primary disabled d-none d-md-inline-block">
+        Login to add to schedule
+    </button>
+</ng-template>
+
+<!--<li *ngFor="let course of allCourses">{{ course.name }}</li>-->
+

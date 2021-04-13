@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/public/style.css">
+    <title>UWO Timetable</title>
+</head>
+<body>
+
+<div class="container">
+   <h1>Western Timetable Search</h1>
+
+
+    <!-- alert element to display any errors and stuff !-->
+    <div id="alert"></div>
+
+
+    <div class="grid flex-container">
+        <div class="col-1-4">
+            <button onclick="toggleAddScheduleForm()">Create New Schedule</button>
+        </div>
+        <div class="col-1-4">
+            <button onclick="loadMySchedule()">List My Schedules</button>
+        </div>
+        <div class="col-1-4">
+            <button onclick="deleteAllSchedules()" class="danger">Delete All Schedules</button>
+        </div>
+    </div>
+
+    <div id="add-schedule-form" class="flex-container">
+        <div class="grid flex-container add-schedule">
+            <div class="add-schedule">
+                <div class="col">
+                    <label for="schedule_name">Schedule Name</label>
+                    <input type="text" id="schedule_name" name="name">
+                </div>
+                <div class="col">
+                    <button onclick="addSchedule()" class="success">Add Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="schedule-list">
+
+
+    </div>
+
+
+    <div class="search-bar mt-50 mb-50">
+        <div class="grid mb-0">
+            <div class="col-1-3">
+                <label for="subject">Subject</label>
+                <select name="subject" id="subject">
+                    <option>Loading...</option>
+                </select>
+            </div>
+            <div class="col-1-3">
+                <label for="course">Course</label>
+                <input type="text" id="course" name="course">
+            </div>
+            <div class="col-1-1">
+                <label for="component">Component</label>
+                <select id="component" name="component">
+                    <option>Loading...</option>
+                </select>
+            </div>
+
+            <div class="col-1">
+                <label for="">&nbsp;</label>
+                <button onclick="search()" id="search">Search</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="list-courses-in-schedule">
+
+
+        <div class="modal-content">
+            <span onclick="closeModal('list-courses-in-schedule')" class="close-modal">&times;</span>
+
+            <div id="courses-in-schedule"></div>
+
+        </div>
+
+    </div>
+
+    <!-- The Modal -->
+    <div id="add-course-modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span onclick="closeModal('add-course-modal')" class="close-modal">&times;</span>
+
+            <h3 class="mb-5">Add Course to Schedule</h3>
+
+            <label for="user-schedules">Select a schedule to add this course to</label>
+            <select name="subject" id="user-schedules">
+                <option>Loading...</option>
+            </select>
+            <input type="hidden" name="course-id" id="hidden-course-id">
+            <input type="hidden" name="subject-name" id="hidden-subject-name">
+
+            <button onclick="addToSchedule()" id="add-to-schedule-button" class="success">Add to Schedule</button>
+        </div>
+
+    </div>
+
+
+    <div class="mb-50" id="search-results-container">
+        <h2>Search Results</h2>
+
+        <div id="search-results">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/public/scripts.js"></script>
+</body>
+</html>

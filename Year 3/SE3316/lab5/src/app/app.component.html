@@ -1,0 +1,119 @@
+<nav class="navbar navbar-expand-lg navbar-light" id="topnav">
+    <div class="container">
+
+        <!-- Toggler -->
+        <button class="navbar-toggler mr-auto"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbar"
+                aria-controls="navbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Brand -->
+        <a class="mr-auto order-lg-first" href="/">
+            <img class="navbar-brand-img" src="/assets/img/logo.png" alt="Logo">
+        </a>
+
+
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbar">
+
+
+
+
+            <!-- Navigation -->
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="about">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false" role="button">
+                        Policies
+                        <!--                            <i class="fe fe-chevron-down ml-2"></i>-->
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <a  class="dropdown-item" routerLink="./policies/privacy-policy" role="menuitem">
+                            Privacy Policy
+                        </a>
+                        <a  class="dropdown-item" routerLink="./policies/dmca-policy" role="menuitem">
+                            DCMA Policy
+                        </a>
+                        <a  class="dropdown-item" routerLink="./policies/aup-policy" role="menuitem">
+                            AUP Policy
+                        </a>
+                    </div>
+                </li>
+
+                <ng-container *ngIf="!user">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="login">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="register">
+                            Register
+                        </a>
+                    </li>
+                </ng-container>
+
+
+                <ng-container *ngIf="user">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="dashboard">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <ng-container *ngIf="this.user.roles.admin">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="admin">
+                                Admin Panel
+                            </a>
+                        </li>
+
+                    </ng-container>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false" role="button">
+                            {{ user.name }}
+<!--                            <i class="fe fe-chevron-down ml-2"></i>-->
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a  class="dropdown-item" routerLink="settings" role="menuitem"><i class="fe fe-settings" aria-hidden="true"></i>
+                                Settings</a>
+                            <a (click)="auth.signOut()"  class="dropdown-item" role="menuitem"><i class="fe fe-log-out" aria-hidden="true"></i>
+                                Logout</a>
+                        </div>
+                    </li>
+                </ng-container>
+
+
+
+
+            </ul>
+
+        </div>
+
+    </div> <!-- / .container -->
+</nav>
+
+
+<main role="main" class="container pt-5">
+    <router-outlet></router-outlet>
+</main>
+

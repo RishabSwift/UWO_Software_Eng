@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8">
+
+        <div class="form-group">
+
+            <!-- Label -->
+            <label class="mb-1">
+                DMCA Notice & Takedown Policy
+            </label>
+
+            <!-- Text -->
+            <small class="form-text text-muted">
+                This DMCA policy is visible throughout the site.
+            </small>
+
+            <!-- Textarea -->
+            <textarea [(ngModel)]="dmcaText" class="form-control" rows="10"></textarea>
+
+        </div>
+
+        <!-- Divider -->
+        <hr class="mt-5 mb-5">
+
+        <!-- Buttons -->
+        <a (click)="saveDmcaPolicy()" class="btn btn-block btn-primary">
+            Save DMCA Policy
+        </a>
+
+    </div>
+</div>

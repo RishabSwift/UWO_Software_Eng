@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+    <title>Lab 2</title>
+    <meta name="description" content="Welcome to pokedox">
+
+    <meta name="author" content="Rishab Bhatt">
+    <meta name="copyright" content="Rishab">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<div class="container">
+
+
+    <div class="text-center">
+        <h1>Pokemons</h1>
+
+    </div>
+
+    <div class="flex-container flex-equally-spaced">
+    
+        <div class="mr-10">
+            <input onkeyup="search()" onkeypress="handleKeyPress(event)" id="search-name" type="text"
+                placeholder="Search by name...">
+        </div>
+        <div class="mr-10">
+            <input onkeyup="search()" onkeypress="handleKeyPress(event)" id="search-id" type="text"
+                placeholder="Search by number..">
+        </div>
+    
+    </div>
+
+    <div id="search-clear-results" class="text-center">
+        <a href="#" onclick="clearResults()">Clear results</a>
+    
+        <div id="no-results-found">
+            Sorry, no results found!
+        </div>
+    </div>
+    <div id="lists">
+      
+        <ul class="flex-container flex-equally-spaced" id="pokemons-list"></ul>
+        
+        <div class="text-center text-small pb-50">
+            <h1>References</h1>
+
+            <small>
+                Pokedox json from <a target="_blank"  href="https://github.com/fanzeyi/pokemon.json/blob/master/pokedex.json">GitHub User "fanzeyi"</a>
+ 
+                <br>
+      
+                Dataset for reference from <a target="_blank"  href="https://www.kaggle.com/kvpratama/pokemon-images-dataset">Kaggle</a>
+                
+                <br>
+
+                Poppins font from <a  target="_blank" href="https://fonts.google.com/specimen/Poppins">Google Fonts</a>
+            </small>
+        </div>
+    </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

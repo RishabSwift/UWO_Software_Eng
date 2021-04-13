@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8">
+
+            <div class="form-group">
+
+                <!-- Label -->
+                <label class="mb-1">
+                    Privacy Policy
+                </label>
+
+                <!-- Text -->
+                <small class="form-text text-muted">
+                    This policy is visible throughout the site.
+                </small>
+
+                <!-- Textarea -->
+                <textarea [(ngModel)]="privacyText" class="form-control" rows="10"></textarea>
+
+            </div>
+
+            <!-- Divider -->
+            <hr class="mt-5 mb-5">
+
+            <!-- Buttons -->
+            <a (click)="savePrivacyPolicy()" class="btn btn-block btn-primary">
+                Save Privacy Policy
+            </a>
+
+    </div>
+</div>

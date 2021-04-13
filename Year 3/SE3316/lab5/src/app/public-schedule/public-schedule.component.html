@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header">
+
+        <!-- Title -->
+        <h2 class="card-header-title">
+            Recently added courses by other students...
+        </h2>
+    </div>
+    <div class="card-body">
+
+        <!-- List group -->
+        <div class="list-group list-group-flush my-n3">
+            <div class="list-group-item" *ngFor="let sharedSchedule of publicSchedules">
+                <div class="row align-items-center">
+
+                    <div class="col ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1 d-inline-flex">
+                            <button class="btn btn-link px-0" (click)="showCoursesInSchedule(sharedSchedule, coursesInSchedule)">
+                                {{ sharedSchedule.name }}
+
+                            </button>
+                        </h4>
+
+
+                        <p class="card-text small text-muted text-truncate">
+                            by {{ sharedSchedule.username }}, {{ sharedSchedule.updated_at.toDate() | dateAgo}}
+                        </p>
+
+                    </div>
+                    <div class="col-auto">
+
+                        <span class="badge badge-soft-primary font-weight-light small ml-2">
+                            {{ scheduleService.countCoursesForSchedule(sharedSchedule) }} courses
+                        </span>
+
+                    </div>
+                </div> <!-- / .row -->
+            </div>
+        </div>
+
+    </div> <!-- / .card-body -->
+</div>
+
+
+<app-courses-in-schedule [showDelete]="false" [modalId]="'showCoursesInPublicSchedule'" #coursesInSchedule [allCourses]="allCourses" [selectedSchedule]="selectedSchedule" ></app-courses-in-schedule>

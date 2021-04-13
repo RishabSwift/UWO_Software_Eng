@@ -1,0 +1,453 @@
+/* You can add global styles to this file, and also import other style files */
+html, body, div, span
+h1, h2, h3, h4, h5, h6, p,
+a, img, ol, ul, li, form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+strong {
+  font-weight: bold;
+}
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #f9fbfd;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+}
+
+p {
+  line-height: 150%;
+  margin: 0 0 10px;
+}
+
+
+a {
+  color: #528b9c;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #3b636c;
+}
+
+input[type=text] {
+  background-color: #edf2f9;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-clip: padding-box;
+
+}
+
+
+.search-bar {
+  padding: 30px;
+  background: white;
+}
+
+.grid {
+  margin: 0 0 20px 0;
+}
+
+.grid:after {
+  /* Or @extend clearfix */
+  content: "";
+  display: table;
+  clear: both;
+}
+
+[class*='col-'] {
+  float: left;
+  padding-right: 20px;
+}
+
+.grid [class*='col-']:last-of-type {
+  padding-right: 0;
+}
+
+.col-2-3 {
+  width: 66.66%;
+}
+
+.col-1-3 {
+  width: 33.33%;
+}
+
+.col-1-2 {
+  width: 50%;
+}
+
+.col-1-4 {
+  width: 25%;
+}
+
+.col-1-8 {
+  width: 12.5%;
+}
+
+/* Opt-in outside padding */
+.grid-pad {
+  padding: 20px 0 20px 20px;
+}
+
+.grid-pad [class*='col-']:last-of-type {
+  padding-right: 20px;
+}
+
+.add-schedule {
+  background: white;
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+
+}
+
+
+button {
+  background-color: rgba(164, 51, 255, 0.14);
+  color: black;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 12px 30px;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+button.danger {
+  background-color: #fecbcb;
+}
+
+button.danger:hover {
+  background-color: #e2b5b5;
+}
+
+button.success {
+  background-color: #d7fece;
+}
+
+button.success:hover {
+  background-color: #bafeb4;
+}
+
+button:hover {
+  background-color: rgba(164, 51, 255, 0.32);
+}
+
+input[type=text]:focus {
+  background-color: #e7ecf3;
+}
+
+.flex-container {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
+
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  /*-webkit-appearance: none;*/
+  /*-moz-appearance: none;*/
+  /*appearance: none;       !* Remove default arrow *!*/
+  overflow: hidden;
+  background-color: #edf2f9;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-clip: padding-box;
+}
+
+input[type=text]:hover {
+  background-color: #e7ecf3;
+}
+
+input[type=text]::placeholder {
+  color: #b1c2d9;
+}
+
+.container {
+  padding: 100px 100px;
+  margin: auto;
+  position: absolute;
+  width: 1384px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-success {
+  color: #029c00;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-none{
+  display: none !important;
+}
+
+.text-danger {
+  color: #ff4f4f !important;
+}
+
+.text-warning {
+  color: #ac9932;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-equally-spaced {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+ul {
+  padding-bottom: 50px;
+}
+
+li:hover {
+  box-shadow: 0 1.75rem 2.5rem rgba(18, 38, 63, .53);
+}
+
+
+img {
+  max-width: 50%;
+  height: auto;
+
+}
+
+.w-100 {
+  min-width: 100%;
+}
+
+
+.text-light {
+  color: #95aac9 !important;
+}
+
+
+#search-clear-results {
+  display: none;
+}
+
+.mr-10 {
+  margin-right: 10px !important;
+}
+
+.mr-3 {
+  margin-right: 3px !important;
+}
+
+.pb-50 {
+  padding-bottom: 50px !important;
+}
+
+.pb-0 {
+  padding-bottom: 0 !important;
+}
+
+.mb-5 {
+  margin-bottom: 5px !important;
+}
+
+.mb-0 {
+  margin: 0 !important;
+}
+
+.mb-50 {
+  margin-bottom: 50px !important;
+}
+.mt-50 {
+  margin-top: 50px !important;
+}
+
+.alert {
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-danger {
+  color: #ff4f4f;
+  overflow: hidden;
+  border: 1px solid #ff4f4f;
+  padding: 0.92857143em;
+  background: #ff4f4f17;
+}
+
+
+.alert-success {
+  color: #029c00;
+  overflow: hidden;
+  border: 1px solid #02bc00;
+  padding: 0.92857143em;
+  background: rgba(71, 255, 94, 0.09);
+}
+
+.header p {
+  margin-top: 10px;
+  color: #4b4b4f;
+  font-size: 11pt;
+}
+
+
+table {
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+table * {
+  position: relative;
+}
+
+table td, table th {
+  padding-left: 8px;
+}
+
+table thead tr {
+  height: 60px;
+  background: #edf2f9;
+}
+
+table tbody tr {
+  height: 50px;
+}
+
+table tbody tr:last-child {
+  border: 0;
+}
+
+table td, table th {
+  text-align: left;
+}
+
+.table-head th {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fbfd;
+}
+
+tbody tr {
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.2;
+}
+
+tbody tr:hover {
+  color: #555555;
+  background-color: #f2f7fe;
+}
+
+
+.course-title {
+  color: #4d2387;
+  margin-top: 50px;
+}
+
+.container {
+  margin-bottom: 50px;
+}
+
+td a {
+  margin-right: 15px;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 1;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 450px;
+}
+
+#list-courses-in-schedule > .modal-content {
+  width: 675px !important;
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,109 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8">
+
+        <!-- Header -->
+        <div class="header mt-md-5">
+            <div class="header-body">
+                <div class="row align-items-center">
+                    <div class="col">
+
+                        <!-- Pretitle -->
+                        <h6 class="header-pretitle">
+                            Overview
+                        </h6>
+
+                        <!-- Title -->
+                        <h1 class="header-title">
+                            Account
+                        </h1>
+
+                    </div>
+                </div> <!-- / .row -->
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form>
+            <div class="row justify-content-between align-items-center mb-5">
+                <div class="col-12 col-md-9 col-xl-7">
+
+                    <!-- Heading -->
+                    <h2 class="mb-2">
+                        Change your password
+                    </h2>
+
+                    <!-- Text -->
+                    <p class="text-muted mb-xl-0">
+                        We will email you a confirmation when changing your password, so please expect that email after
+                        submitting.
+                    </p>
+
+                    <hr>
+                    <div class="form-group">
+
+                        <!-- Label -->
+                        <label>
+                            New password
+                        </label>
+
+                        <!-- Input -->
+                        <input #password type="password" class="form-control">
+
+                    </div>
+
+                    <button (click)="auth.changePassword(password.value)" class="btn btn-primary btn-block">
+                        Change Password
+                    </button>
+
+                </div>
+                <div class="col col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!-- List group -->
+                            <div class="list-group list-group-flush my-n3">
+                                <div class="list-group-item">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+
+                                            <!-- Title -->
+                                            <h5 class="mb-0">
+                                                Name
+                                            </h5>
+
+                                        </div>
+                                        <div class="col-auto">
+                                            {{ user.displayName }}
+                                        </div>
+                                    </div> <!-- / .row -->
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+
+                                            <!-- Title -->
+                                            <h5 class="mb-0">
+                                                Email
+                                            </h5>
+
+                                        </div>
+                                        <div class="col-auto">
+
+                                            {{ user.email }}
+
+                                        </div>
+                                    </div> <!-- / .row -->
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <br><br>
+
+    </div>
+</div>

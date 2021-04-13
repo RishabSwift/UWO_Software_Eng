@@ -1,0 +1,21 @@
+.text-purple {
+  color: #4d2387;
+}
+
+.dropdown-ellipses {
+  color: $text-muted;
+}
+
+.scrollable-card {
+  max-height: 650px;
+  overflow-y: auto;
+}
+
+.btn-course:hover {
+  background: $gray-200;
+}
+
+
+.navbar-brand-img {
+  max-height: 2.7rem !important;
+}

@@ -1,0 +1,113 @@
+<div class="row">
+    <div class="col-12 col-md-6 col-xl-4" *ngFor="let user of allUsers">
+
+        <!-- Card -->
+        <div class="card">
+
+            <div class="dropdown card-dropdown">
+                <a href="#!"
+                   class="dropdown-ellipses dropdown-toggle text-white"
+                   role="button"
+                   data-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false">
+                    <i class="fe fe-more-vertical"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <a (click)="auth.makeAdmin(user)" *ngIf="auth.isStudent(user)" type="button" class="dropdown-item">
+                        <i class="fe fe-shield"></i>
+                        Make Admin
+                    </a>
+
+                    <a (click)="auth.removeAdmin(user)" *ngIf="auth.isAdmin(user)" type="button" class="dropdown-item">
+                        <i class="fe fe-shield-off"></i>
+                        Remove Admin
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Image -->
+            <img src="/assets/img/covers/profile-cover-{{ randomNumber  }}.jpg" alt="..." class="card-img-top">
+
+            <!-- Body -->
+            <div class="card-body text-center py-0">
+
+                <!-- Image -->
+                <a href="javascript:;" class="avatar avatar-xl card-avatar card-avatar-top">
+
+                    <!--                    <img src="/assets/img/avatars/profiles/avatar-1.jpg"-->
+                    <!--                         class="avatar-img rounded-circle border border-4 border-card"-->
+                    <!--                         alt="...">-->
+                </a>
+
+                <!-- Heading -->
+                <h2 class="card-title">
+                    {{ user.name}}
+                </h2>
+
+
+                <span *ngIf="auth.isStudent(user)" class="badge badge-soft-primary">
+                    Student
+                </span>
+
+                <span *ngIf="auth.isAdmin(user)" class="badge badge-soft-primary ml-2">
+                    Administrator
+                </span>
+
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col">
+
+                                <!-- Title -->
+                                <h5 class="mb-0 text-left">
+                                    Email
+                                </h5>
+
+                            </div>
+                            <div class="col-auto">
+                                {{ user.email }}
+                            </div>
+                        </div> <!-- / .row -->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="card-footer card-footer-boxed">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+
+                        <!-- Status -->
+                        <small *ngIf="user.activated">
+                            <span class="text-success">●</span> Activated
+                        </small>
+
+                        <small *ngIf="!user.activated">
+                            <span class="text-danger">●</span> Not Activated
+                        </small>
+
+                    </div>
+                    <div class="col-auto">
+
+                        <!-- Link -->
+                        <button *ngIf="user.activated" (click)="auth.disableAccount(user)" class="btn btn-sm btn-primary">
+                            Disable Account
+                        </button>
+                        <button *ngIf="!user.activated" (click)="auth.enableAccount(user)" class="btn btn-sm btn-primary">
+                            Enable Account
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

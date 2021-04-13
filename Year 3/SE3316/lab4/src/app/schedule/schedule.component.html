@@ -1,0 +1,85 @@
+<div class="grid flex-container">
+    <div class="col-1-4">
+        <button (click)="this.showAddScheduleForm = !this.showAddScheduleForm;">Create New Schedule</button>
+    </div>
+    <div class="col-1-4">
+        <button (click)="loadMySchedule(); this.showUserScheduleList = !this.showUserScheduleList;">List My Schedules
+        </button>
+    </div>
+    <div class="col-1-4">
+        <button (click)="deleteAllSchedules()" class="danger">Delete All Schedules</button>
+    </div>
+</div>
+
+
+<div *ngIf="alertCreateSchedule !== ''" class="alert {{ alertType}}">
+    {{alertCreateSchedule}}
+</div>
+
+<div *ngIf="showAddScheduleForm" id="add-schedule-form" class="flex-container">
+
+    <div class="grid flex-container add-schedule">
+        <div class="add-schedule">
+            <div class="col">
+                <label for="schedule_name">Schedule Name</label>
+                <input type="text" [(ngModel)]="newScheduleName" id="schedule_name">
+            </div>
+            <div class="col">
+                <button (click)="createSchedule()" class="success">Add Schedule</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showUserScheduleList" id="schedule-list">
+    <table>
+        <thead>
+        <tr>
+            <th>Schedule Name</th>
+            <th>Total Courses</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let schedule of schedules">
+            <td>{{schedule.name}}</td>
+            <td>{{schedule.courseCount}}</td>
+            <td>
+                <a (click)="viewSchedule(schedule.name)">View Schedule</a>
+                <a (click)="deleteSchedule(schedule.name)" class="text-danger">Delete Schedule</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<!-- courses in schedule -- open in modal -->
+<div [ngClass]="showModal ? 'd-block' : 'd-none'" class="modal" id="list-courses-in-schedule">
+    <div class="modal-content">
+        <span (click)="showModal = !showModal" class="close-modal">&times;</span>
+        <h3 class="mb-5">Viewing courses in "{{currentlyViewingScheduleName}}"</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Course ID</th>
+                <th>Component</th>
+                <th>Days</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let course of coursesForSchedule">
+                <td>{{ course[0].subject }}</td>
+                <td>{{ course[0].id }}</td>
+                <td>{{ course[0].component }}</td>
+                <td>{{ course[0].days }}</td>
+                <td>{{ course[0].status }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

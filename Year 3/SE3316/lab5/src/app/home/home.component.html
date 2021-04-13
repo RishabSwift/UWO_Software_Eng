@@ -1,0 +1,50 @@
+<div class="pt-7 mt-n5 mw-100  bg-dark bg-ellipsess rounded">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+
+                <!-- Title -->
+                <h1 class="display-3 text-center text-white">
+                    Welcome to this #Lab5Application
+                </h1>
+
+                <!-- Text -->
+                <p class="lead text-center text-muted">
+                    You can use this tool to search for courses, add courses to your schedule, and more.
+                    You can also see any reviews on courses.
+                </p>
+                <p class="lead text-center text-muted">
+                    You need an account to save courses to your schedule.
+                </p>
+
+                <div class="text-center mb-3" *ngIf="auth.user$ | async as user; else login">
+                    <button class="btn btn-light" (click)="auth.signOut()">Sign Out</button>
+                </div>
+
+                <ng-template #login>
+                    <p class="lead text-center">
+                        <a class="btn btn-primary btn-lg mr-3" routerLink="/login" role="button">
+                            <i class="fe fe-log-in"></i> Login</a>
+                        <a class="btn btn-light btn-lg"
+                           routerLink="/register"
+                           role="button"><i class="fe fe-user-plus"></i> Register</a>
+                    </p>
+                </ng-template>
+
+
+            </div>
+
+            <div class="col-12">
+                <app-search-courses [allCourses]="allCourses"></app-search-courses>
+            </div>
+
+            <div class="col-12">
+                <app-public-schedule [allCourses]="allCourses" [publicSchedules]="allSchedules"></app-public-schedule>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
