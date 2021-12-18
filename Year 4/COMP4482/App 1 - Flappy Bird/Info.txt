@@ -1,0 +1,20 @@
+Tutorial Followed: https://www.youtube.com/watch?v=uRWmEjxY334
+
+----
+
+Game: Flappy Bird
+Final Build name: Flappy Bird App.app (Runs on macOS)
+Code directory: Code.zip
+
+----
+
+Overview:
+
+Using Collisions, animations and prefabs to dynamically create automatically random pipes and coins.
+
+----
+
+Custom Added:
+
+Randomly instantiate "coins" that give you additional points when you touch them (collision).
+Once you touch coins, +2 is added to your score and the coin disappears. Coin randomly appears for the user to get in between the pipes.

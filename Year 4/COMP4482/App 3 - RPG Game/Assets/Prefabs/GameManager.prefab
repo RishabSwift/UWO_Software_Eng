@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &256624712376429304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5906924157476546237}
+  - component: {fileID: 7482513530021270273}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5906924157476546237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256624712376429304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.576528, y: -2.1675587, z: -181.7526}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6449341639017331004}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7482513530021270273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256624712376429304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d690c3146b9a4487dbbfc3820bc31f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 6449341639017331007}
+  menuOpen: 0
+  dialogOpen: 0
+  fadingActive: 0
+  fightActive: 0
+  playerItems:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  totalItems: 000000000000000000000000000000000000000000000000000000000000000000000000
+  referenceItems:
+  - {fileID: 7204709937127199463, guid: 9624086eb8a724c32bd734ba95842e5b, type: 3}
+  - {fileID: 5807182597566266473, guid: 7e242e3901a9b469f9f91095ff68ce1e, type: 3}
+  - {fileID: 7108072320222349448, guid: 763cdb78b14be448eb02b6efa1486478, type: 3}
+  - {fileID: 3840032847515459155, guid: 51f7831888a744014afb193a29b306d9, type: 3}
+  - {fileID: 7382876795321796295, guid: 31a8a606bef5c4925969db243c464797, type: 3}
+--- !u!1 &6449341639017331006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6449341639017331004}
+  - component: {fileID: 6449341639017331007}
+  m_Layer: 0
+  m_Name: PlayerStat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6449341639017331004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6449341639017331006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 510.42346, y: 104.94882, z: 181.7526}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5906924157476546237}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6449341639017331007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6449341639017331006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3336c141f0a4dada9f8c315ff6c18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: Derex
+  currentLevel: 1
+  currentXP: 250
+  currentHP: 250
+  maxHP: 100
+  startingXp: 1000
+  XpToNextLevel: 
+  maxLevel: 10
+  strenth: 15
+  defence: 15
+  weaponPower: 10
+  armourPower: 10
+  currentWeapon: 
+  currentArmour: 
+  characterImage: {fileID: 7152930139536384079, guid: 4b02394a0273e42738616b2e53997e17, type: 3}

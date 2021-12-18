@@ -1,0 +1,12 @@
+{
+  "name": "rbhatt23-se3314b-assignment1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "../Client/GetImage.js",
+  "dependencies": {
+    "open": "^7.4.0"
+  },
+  "devDependencies": {},
+  "author": "Rishab Bhatt",
+  "license": "ISC"
+}
